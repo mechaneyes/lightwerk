@@ -1,15 +1,24 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
-import Head from "next/head";
-import Slider from "react-slick";
+import Carousel from "@/components/Carousel";
 import type { PhotoType } from "@/utils/types";
 
-const Home: NextPage<{ currentPhoto: PhotoType }> = ({}) => {
-  const [allPhotos, setAllPhotos] = useState<PhotoType[] | null>(null);
+async function fetchData() {
+  const res = await fetch(`http://localhost:3001/api/photo`);
 
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+export const metadata = {
+  title: "Thirdeyes Colorways",
+  description: 'Color Options for the Thirdeyes Chat Interface',
+};
+
+const Thirdeyes: NextPage<{ currentPhoto: PhotoType }> = async ({}) => {
   const carouselSettings = {
     dots: true,
     infinite: true,
@@ -18,48 +27,30 @@ const Home: NextPage<{ currentPhoto: PhotoType }> = ({}) => {
     slidesToScroll: 1,
   };
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch(`/api/photo`);
-      const data = await res.json();
-      const fetchedPhotos = data.result.resources;
-      setAllPhotos(fetchedPhotos);
-      console.log("fetchedPhotos", fetchedPhotos);
-    } catch (err) {
-      console.error("fetch error", err);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const data = await fetchData();
+  const fetchedPhotos = data.result.resources;
 
   return (
     <>
-      <Head>
-        <title>Very Still Photos</title>
-      </Head>
-
       <main className="gallery gallery--carousel">
-        <Slider {...carouselSettings}>
-          {allPhotos &&
-            allPhotos.map((photo, index) => (
-              <div key={index} className="slide-holder">
-                <Image
-                  src={photo?.url.replace(".png", ".gif") ?? ""}
-                  width={1584}
-                  height={800}
-                  quality={100}
-                  alt={`Thirdeyes Colorway: ${photo?.filename}`}
-                  priority={true}
-                  />
-                <h3>{photo?.filename}</h3>
-              </div>
-            ))}
-        </Slider>
+        <Carousel {...carouselSettings}>
+          {fetchedPhotos.map((photo: PhotoType, index: number) => (
+            <div key={index} className="slide-holder">
+              <Image
+                src={photo?.url.replace(".png", ".gif") ?? ""}
+                width={1584}
+                height={800}
+                quality={100}
+                alt={`Thirdeyes Colorway: ${photo?.filename}`}
+                priority={true}
+              />
+              <h3>{photo?.filename}</h3>
+            </div>
+          ))}
+        </Carousel>
       </main>
     </>
   );
 };
 
-export default Home;
+export default Thirdeyes;
