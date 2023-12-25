@@ -1,8 +1,7 @@
-import { NextPage } from "next";
+import { NextPage, Metadata } from "next";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
 import type { PhotoType } from "@/utils/types";
-import { openGraphImage } from '../shared-metadata'
 
 async function fetchData() {
   const res = await fetch(`https://lightwerk.vercel.app/api/photo`);
@@ -14,7 +13,9 @@ async function fetchData() {
   return res.json();
 }
 
-export const metadata = {
+// https://medium.com/@moh.mir36/open-graph-with-next-js-v13-app-directory-22c0049e2087
+// 
+export const metadata: Metadata = {
   title: "Thirdeyes Colorways",
   description: "Color Options for the Thirdeyes Chat Interface",
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
