@@ -5,12 +5,12 @@ import { CldUploadButton } from "next-cloudinary";
 export default function Photos() {
   return (
     <div>
-      <CldUploadButton
+      {/* <CldUploadButton
         options={{ multiple: true }}
         uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME}
       >
         <span>Upload</span>
-      </CldUploadButton>
+      </CldUploadButton> */}
     </div>
   );
 }

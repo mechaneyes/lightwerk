@@ -50,8 +50,9 @@ const Home: NextPage<{ currentPhoto: PhotoType }> = ({}) => {
                   width={1584}
                   height={800}
                   quality={100}
-                  alt="Thirdeyes Layout"
-                />
+                  alt={`Thirdeyes Colorway: ${photo?.filename}`}
+                  priority={true}
+                  />
                 <h3>{photo?.filename}</h3>
               </div>
             ))}
