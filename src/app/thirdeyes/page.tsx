@@ -19,9 +19,13 @@ export const metadata = {
   description: "Color Options for the Thirdeyes Chat Interface",
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
   openGraph: {
-    ...openGraphImage,
     title: "Thirdeyes Colorways",
     description: "Color Options for the Thirdeyes Chat Interface",
+    images: [
+      {
+        url: 'https://lightwerk.vercel.app/thirdeyesOg.gif',
+      },
+    ],
   },
 };
 
