@@ -1,5 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
@@ -8,7 +7,7 @@ cloudinary.config({
   api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
 });
 
-export async function GET(req: NextRequest, res: NextApiResponse) {
+export async function GET() {
   try {
     const result = await cloudinary.search
       .expression("folder:thirdeyes")
@@ -20,6 +19,6 @@ export async function GET(req: NextRequest, res: NextApiResponse) {
     return NextResponse.json({ result });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ photos: [] });
+    return NextResponse.json({ error });
   }
 }

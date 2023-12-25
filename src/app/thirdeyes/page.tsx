@@ -40,18 +40,20 @@ const Home: NextPage<{ currentPhoto: PhotoType }> = ({}) => {
         <title>Very Still Photos</title>
       </Head>
 
-      <main className="gallery gallery--carousel">   
+      <main className="gallery gallery--carousel">
         <Slider {...carouselSettings}>
           {allPhotos &&
             allPhotos.map((photo, index) => (
-              <Image
-                key={index}
-                src={photo?.url.replace(".png", ".gif") ?? ""}
-                width={1584}
-                height={800}
-                quality={100}
-                alt="Thirdeyes Layout"
-              />
+              <div key={index} className="slide-holder">
+                <Image
+                  src={photo?.url.replace(".png", ".gif") ?? ""}
+                  width={1584}
+                  height={800}
+                  quality={100}
+                  alt="Thirdeyes Layout"
+                />
+                <h3>{photo?.filename}</h3>
+              </div>
             ))}
         </Slider>
       </main>

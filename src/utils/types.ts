@@ -7,7 +7,7 @@ export interface PhotoType {
   width: string
   public_id: string
   format: string
-  blurDataUrl?: string
+  filename?: string
 }
 
 export interface SharedModalProps {
