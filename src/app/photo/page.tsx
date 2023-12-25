@@ -1,36 +1,37 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from 'react';
-import { GetServerSideProps, NextPage } from 'next'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import Carousel from '@/components/Carousel'
-import getResults from '@/utils/cachedImages'
-import cloudinary from '@/utils/cloudinary'
-import getBase64ImageUrl from '@/utils/generateBlurPlaceholder'
-import type { PhotoType } from '@/utils/types'
-import { getCldImageUrl } from 'next-cloudinary';
+import { useEffect, useState } from "react";
+import { GetServerSideProps, NextPage } from "next";
+import Image from "next/image";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import Carousel from "@/components/Carousel";
+import getResults from "@/utils/cachedImages";
+import cloudinary from "@/utils/cloudinary";
+import getBase64ImageUrl from "@/utils/generateBlurPlaceholder";
+import type { PhotoType } from "@/utils/types";
+import { getCldImageUrl } from "next-cloudinary";
 
-const Home: NextPage<{ currentPhoto: PhotoType }> = ({  }) => {
-  const [currentPhoto, setCurrentPhoto] = useState(null);
+const Home: NextPage<{ currentPhoto: PhotoType }> = ({}) => {
+  const [currentPhoto, setCurrentPhoto] = useState<PhotoType | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(`/api/photo`);
         const data = await res.json();
-        const currentPhoto = data[0];
-        console.log('data', data.result.resources[0].url);
-        setCurrentPhoto(currentPhoto);
+        const retrievedPhoto = data.result.resources[0];
+        setCurrentPhoto(retrievedPhoto);
+        console.log("retrievedPhoto", retrievedPhoto);
       } catch (err) {
-        console.error('fetch error', err);
+        console.error("fetch error", err);
       }
     };
 
     fetchData();
   }, []);
 
-  // console.log('fart', currentPhoto);
+  console.log("fart", currentPhoto);
 
   return (
     <>
@@ -41,26 +42,18 @@ const Home: NextPage<{ currentPhoto: PhotoType }> = ({  }) => {
       </Head>
       <main className="mx-auto max-w-[1960px] p-4">
         {/* <Carousel currentPhoto={currentPhoto} index={index} /> */}
-        hello
+        {currentPhoto ? (
+          <Image
+            src={currentPhoto?.url ?? ""}
+            width={1584}
+            height={800}
+            quality={100}
+            alt="Thirdeyes Layout"
+          />
+        ) : null}
       </main>
     </>
-  )
-}
-
-// Home.getInitialProps = async () => {
-//   const res = await fetch(`/api/photo`)
-//     .then(res => {
-//       console.log('status', res.status);
-//       return res.json();
-//     })
-//     .catch(err => {
-//       console.error('fetch error', err);
-//     });
-
-//   const currentPhoto = res[0];
-//   console.log('currentPhoto', currentPhoto);
-
-//   return { currentPhoto };
-// }
+  );
+};
 
 export default Home;

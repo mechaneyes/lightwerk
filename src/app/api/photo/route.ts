@@ -11,7 +11,7 @@ cloudinary.config({
 export async function GET(req: NextRequest, res: NextApiResponse) {
   try {
     const result = await cloudinary.search
-      .expression("tags:thirdeyes")
+      .expression("folder:thirdeyes")
       .sort_by("public_id", "desc")
       .max_results(30)
       .execute()

@@ -2,6 +2,7 @@
 export interface PhotoType {
   slug: string
   id: number
+  url: string
   height: string
   width: string
   public_id: string
