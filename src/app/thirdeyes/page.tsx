@@ -27,13 +27,13 @@ const Thirdeyes: NextPage<{}> = async ({}) => {
     slidesToScroll: 1,
   };
 
-  const data = await fetchData();
-  const fetchedPhotos = data.result.resources;
+  // const data = await fetchData();
+  // const fetchedPhotos = data.result.resources;
 
   return (
     <>
       <main className="gallery gallery--carousel">
-        <Carousel {...carouselSettings}>
+        {/* <Carousel {...carouselSettings}>
           {fetchedPhotos.map((photo: PhotoType, index: number) => (
             <div key={index} className="slide-holder">
               <Image
@@ -47,7 +47,7 @@ const Thirdeyes: NextPage<{}> = async ({}) => {
               <h3>{photo?.filename}</h3>
             </div>
           ))}
-        </Carousel>
+        </Carousel> */}
       </main>
     </>
   );
