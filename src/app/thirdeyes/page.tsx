@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
 import type { PhotoType } from "@/utils/types";
+import { openGraphImage } from '../shared-metadata'
 
 async function fetchData() {
   const res = await fetch(`https://lightwerk.vercel.app/api/photo`);
@@ -16,6 +17,12 @@ async function fetchData() {
 export const metadata = {
   title: "Thirdeyes Colorways",
   description: "Color Options for the Thirdeyes Chat Interface",
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
+  openGraph: {
+    ...openGraphImage,
+    title: "Thirdeyes Colorways",
+    description: "Color Options for the Thirdeyes Chat Interface",
+  },
 };
 
 const Thirdeyes: NextPage<{}> = async ({}) => {
