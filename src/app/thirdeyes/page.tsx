@@ -15,10 +15,10 @@ async function fetchData() {
 
 export const metadata = {
   title: "Thirdeyes Colorways",
-  description: 'Color Options for the Thirdeyes Chat Interface',
+  description: "Color Options for the Thirdeyes Chat Interface",
 };
 
-const Thirdeyes: NextPage<{ currentPhoto: PhotoType }> = async ({}) => {
+const Thirdeyes: NextPage<{}> = async ({}) => {
   const carouselSettings = {
     dots: true,
     infinite: true,
