@@ -12,6 +12,10 @@
       padding: 2rem 0 1rem;
     }
 
+    @include bp("small") {
+      // display: flex;
+    }
+
     .slick-slider {
       margin: 0 auto;
       width: 100%;
