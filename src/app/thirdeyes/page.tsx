@@ -4,7 +4,7 @@ import Carousel from "@/components/Carousel";
 import type { PhotoType } from "@/utils/types";
 
 async function fetchData() {
-  const res = await fetch(`http://localhost:3001/api/photo`);
+  const res = await fetch(`https://lightwerk.vercel.app/api/photo`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
