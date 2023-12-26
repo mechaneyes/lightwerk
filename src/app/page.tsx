@@ -4,7 +4,7 @@ import Carousel from "@/components/Carousel";
 import type { PhotoType } from "@/utils/types";
 
 async function fetchData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/photo`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/photo?cloudinary_folder=thirdeyes`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
