@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description: "Color Options for the Thirdeyes Chat Interface",
     images: [
       {
-        url: 'https://lightwerk.vercel.app/thirdeyesViaLightwerk.gif',
+        url: 'https://lightwerk.vercel.app/justWhirligigOg.gif',
       },
     ],
   },
