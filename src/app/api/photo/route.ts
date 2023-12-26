@@ -11,7 +11,7 @@ export async function GET() {
   try {
     const result = await cloudinary.search
       .expression("folder:thirdeyes")
-      .sort_by("public_id", "desc")
+      .sort_by("public_id", "asc")
       .max_results(30)
       .execute()
       // .then((result) => console.log(result));
