@@ -1,5 +1,6 @@
 import { NextPage, Metadata } from "next";
 import Image from "next/image";
+import Header from "@/components/Header";
 import Carousel from "@/components/Carousel";
 import type { PhotoType } from "@/utils/types";
 
@@ -44,7 +45,7 @@ const Thirdeyes: NextPage<{}> = async ({}) => {
 
   return (
     <>
-      <a href="/api/auth/login">Login</a>
+      <Header />
       <main className="gallery gallery--carousel">
         <Carousel {...carouselSettings}>
           {fetchedPhotos.map((photo: PhotoType, index: number) => (

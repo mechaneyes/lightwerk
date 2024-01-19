@@ -6,6 +6,32 @@
 @import "pages/_gallery.scss";
 
 body {
-    margin: 0;
-    // background-color: red;
+  margin: 0;
+  // background-color: red;
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  gap: 0.5rem;
+  height: 4rem;
+  padding: 1rem 0 0 1rem;
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  .pic--profile {
+    margin-left: 0.5rem;
+  }
+}
+nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
 }

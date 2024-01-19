@@ -8,7 +8,7 @@ const nextConfig = {
       process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME,
   },
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", "s.gravatar.com"],
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
