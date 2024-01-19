@@ -4,7 +4,9 @@ import Carousel from "@/components/Carousel";
 import type { PhotoType } from "@/utils/types";
 
 async function fetchData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/photo?cloudinary_folder=thirdeyes`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}api/photo?cloudinary_folder=thirdeyes`
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -14,15 +16,15 @@ async function fetchData() {
 }
 
 // https://medium.com/@moh.mir36/open-graph-with-next-js-v13-app-directory-22c0049e2087
-// 
+//
 export const metadata: Metadata = {
-  metadataBase: new URL('https://lightwerk.vercel.app/'),
+  metadataBase: new URL("https://lightwerk.vercel.app/"),
   title: "Thirdeyes Colorways",
   description: "Color Options for the Thirdeyes Chat Interface",
   openGraph: {
     images: [
       {
-        url: 'https://lightwerk.vercel.app/justWhirligigOg.gif',
+        url: "https://lightwerk.vercel.app/justWhirligigOg.gif",
       },
     ],
   },
@@ -42,6 +44,7 @@ const Thirdeyes: NextPage<{}> = async ({}) => {
 
   return (
     <>
+      <a href="/api/auth/login">Login</a>
       <main className="gallery gallery--carousel">
         <Carousel {...carouselSettings}>
           {fetchedPhotos.map((photo: PhotoType, index: number) => (
