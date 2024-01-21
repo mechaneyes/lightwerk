@@ -4,7 +4,7 @@
 // import UploadWidget from "@/components/UploadWidget";
 import { CldUploadWidget } from "next-cloudinary";
 
-export function ImageUpload() {
+const ImageUpload = () => {
   const handleUpload = (result) => {
     if (result.info.secure_url) {
       // Successful upload
@@ -20,7 +20,7 @@ export function ImageUpload() {
       <CldUploadWidget
         options={{
           name: "dhbk213bt",
-          folder: "winterwerk",
+          folder: "nucleus",
           singleUploadAutoClose: true,
           useFilename: true,
           sources: ["local"],
@@ -39,6 +39,6 @@ export function ImageUpload() {
       </CldUploadWidget>
     </div>
   );
-}
+};
 
 export default ImageUpload;
