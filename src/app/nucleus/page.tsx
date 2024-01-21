@@ -16,13 +16,13 @@ async function fetchData() {
 // https://medium.com/@moh.mir36/open-graph-with-next-js-v13-app-directory-22c0049e2087
 // 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://lightwerk.vercel.app/'),
-  title: "Thirdeyes Colorways",
-  description: "Color Options for the Thirdeyes Chat Interface",
+  metadataBase: new URL('https://lightwerk.vercel.app/nucleus'),
+  title: "Nucleus Gallery",
+  description: "Design options for the Nucleus logo",
   openGraph: {
     images: [
       {
-        url: 'https://lightwerk.vercel.app/justWhirligigOg.gif',
+        url: 'https://lightwerk.vercel.app/nucleus.jpg',
       },
     ],
   },
