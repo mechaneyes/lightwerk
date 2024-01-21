@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { getSession } from '@auth0/nextjs-auth0';
+import { useUser } from "@auth0/nextjs-auth0/client";
 
-export default async function Header() {
-  const { user } = await getSession();
+const Header = () => {
+  const { user, error, isLoading } = useUser();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
 
   return (
     <header className="header">
@@ -29,4 +34,6 @@ export default async function Header() {
       </nav>
     </header>
   );
-}
+};
+
+export default Header;
