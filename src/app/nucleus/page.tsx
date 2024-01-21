@@ -39,6 +39,7 @@ const Nucleus: NextPage<{}> = async ({}) => {
 
   const data = await fetchData();
   const fetchedPhotos = data.result.resources;
+  console.log('data', data)
 
   return (
     <>
