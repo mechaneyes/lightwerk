@@ -5,30 +5,6 @@
 import { CldUploadWidget } from "next-cloudinary";
 
 export function ImageUpload() {
-  //   const [isImagUploaded, setIsImageUploaded] = useState(false);
-
-  //   async function handleWidgetClick() {
-  //     const widget = cloudinary.createUploadWidget(
-  //       {
-  //         cloudName: "dhbk213bt",
-  //         uploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME,
-  //         resourceType: "image",
-  //         folder: "winterwerk",
-  //         use_filename: true,
-  //       },
-  //       (error, result) => {
-  //         if (!error && result && result.event === "success") {
-  //           console.log("Uploaded", result.info);
-  //           setIsImageUploaded(true);
-  //         } else if (error) {
-  //           console.log(error);
-  //         }
-  //       }
-  //     );
-
-  //     widget.open();
-  //   }
-
   const handleUpload = (result) => {
     if (result.info.secure_url) {
       // Successful upload
@@ -50,8 +26,7 @@ export function ImageUpload() {
           sources: ["local"],
         }}
         signatureEndpoint="/api/sign-image"
-        uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME}
-        // useFilename={true}
+        uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME_LOCAL}
         onUpload={handleUpload}
       >
         {({ open }) => {
