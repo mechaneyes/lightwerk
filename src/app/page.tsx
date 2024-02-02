@@ -1,13 +1,10 @@
 import { NextPage, Metadata } from "next";
 import Image from "next/image";
-import Header from "@/components/Header";
 import Carousel from "@/components/Carousel";
 import type { PhotoType } from "@/utils/types";
 
 async function fetchData() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}api/photo?cloudinary_folder=thirdeyes`
-  );
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/photo?cloudinary_folder=recognition`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -17,21 +14,21 @@ async function fetchData() {
 }
 
 // https://medium.com/@moh.mir36/open-graph-with-next-js-v13-app-directory-22c0049e2087
-//
+// 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lightwerk.vercel.app/"),
-  title: "Thirdeyes Colorways",
-  description: "Color Options for the Thirdeyes Chat Interface",
+  metadataBase: new URL('https://lightwerk.vercel.app/shadowing'),
+  title: "Shadowing",
+  description: "We are the Dreamers of the Dream",
   openGraph: {
     images: [
       {
-        url: "https://lightwerk.vercel.app/justWhirligigOg.gif",
+        url: 'https://res.cloudinary.com/dhbk213bt/image/upload/v1706917124/recognition/og-shadowing.jpg',
       },
     ],
   },
 };
 
-const Thirdeyes: NextPage<{}> = async ({}) => {
+const Nucleus: NextPage<{}> = async ({}) => {
   const carouselSettings = {
     dots: true,
     infinite: true,
@@ -42,10 +39,10 @@ const Thirdeyes: NextPage<{}> = async ({}) => {
 
   const data = await fetchData();
   const fetchedPhotos = data.result.resources;
+  // console.log('data', data.result.resources)
 
   return (
     <>
-      <Header />
       <main className="gallery gallery--carousel">
         <Carousel {...carouselSettings}>
           {fetchedPhotos.map((photo: PhotoType, index: number) => (
@@ -53,10 +50,10 @@ const Thirdeyes: NextPage<{}> = async ({}) => {
               <Image
                 // src={photo?.url.replace(".png", ".gif") ?? ""}
                 src={photo?.url}
-                width={1584}
-                height={800}
+                width={1280}
+                height={1280}
                 quality={100}
-                alt={`Thirdeyes Colorway: ${photo?.filename}`}
+                alt={`Hexagram Facial Recognition: ${photo?.filename}`}
                 priority={true}
               />
               <h3>{photo?.filename}</h3>
@@ -68,4 +65,4 @@ const Thirdeyes: NextPage<{}> = async ({}) => {
   );
 };
 
-export default Thirdeyes;
+export default Nucleus;

@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
-  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
-  api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 export async function GET(req: NextRequest, res: NextApiResponse) {
@@ -16,7 +16,7 @@ export async function GET(req: NextRequest, res: NextApiResponse) {
     cloudinaryFolder = req.nextUrl.searchParams.get('cloudinary_folder')
     console.log("cloudinary_folder", cloudinaryFolder)
   } else {
-    cloudinaryFolder = "thirdeyes"
+    cloudinaryFolder = "recognition"
     console.log("no folder");
   }
 

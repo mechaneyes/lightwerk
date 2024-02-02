@@ -4,7 +4,7 @@ import Carousel from "@/components/Carousel";
 import type { PhotoType } from "@/utils/types";
 
 async function fetchData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/photo?cloudinary_folder=nucleus`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/photo?cloudinary_folder=recognition`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -16,13 +16,13 @@ async function fetchData() {
 // https://medium.com/@moh.mir36/open-graph-with-next-js-v13-app-directory-22c0049e2087
 // 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://lightwerk.vercel.app/nucleus'),
-  title: "Nucleus Gallery",
-  description: "Design options for the Nucleus logo",
+  metadataBase: new URL('https://lightwerk.vercel.app/shadowing'),
+  title: "Shadowing",
+  description: "We are the Dreamers of the Dream",
   openGraph: {
     images: [
       {
-        url: 'https://lightwerk.vercel.app/nucleus.jpg',
+        url: 'https://res.cloudinary.com/dhbk213bt/image/upload/v1706917124/recognition/og-shadowing.jpg',
       },
     ],
   },
@@ -39,7 +39,7 @@ const Nucleus: NextPage<{}> = async ({}) => {
 
   const data = await fetchData();
   const fetchedPhotos = data.result.resources;
-  console.log('data', data)
+  // console.log('data', data.result.resources)
 
   return (
     <>
@@ -50,10 +50,10 @@ const Nucleus: NextPage<{}> = async ({}) => {
               <Image
                 // src={photo?.url.replace(".png", ".gif") ?? ""}
                 src={photo?.url}
-                width={768}
-                height={768}
+                width={1280}
+                height={1280}
                 quality={100}
-                alt={`Nucleus Logo: ${photo?.filename}`}
+                alt={`Hexagram Facial Recognition: ${photo?.filename}`}
                 priority={true}
               />
               <h3>{photo?.filename}</h3>

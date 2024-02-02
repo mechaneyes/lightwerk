@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: false,
   env: {
-    NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME:
-      process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    CLOUDINARY_CLOUD_NAME:
+      process.env.CLOUDINARY_CLOUD_NAME,
     NEXT_PUBLIC_CLOUDINARY_PRESET_NAME:
       process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME,
   },

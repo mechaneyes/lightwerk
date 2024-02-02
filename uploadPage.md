@@ -1,9 +1,9 @@
+```jsx
 "use client";
 
 // import * as cloudinary from "cloudinary";
 // import UploadWidget from "@/components/UploadWidget";
 import { CldUploadWidget } from "next-cloudinary";
-
 const ImageUpload = () => {
   const handleUpload = (result) => {
     if (result.info.secure_url) {
@@ -14,13 +14,12 @@ const ImageUpload = () => {
       console.error("Upload failed. Error message:", result.info.error.message);
     }
   };
-
   return (
     <div>
       <CldUploadWidget
         options={{
           name: "dhbk213bt",
-          folder: "nucleus",
+          folder: "recognition",
           singleUploadAutoClose: true,
           useFilename: true,
           sources: ["local"],
@@ -40,5 +39,5 @@ const ImageUpload = () => {
     </div>
   );
 };
-
 export default ImageUpload;
+```
