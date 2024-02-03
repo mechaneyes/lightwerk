@@ -16,13 +16,13 @@ async function fetchData() {
 // https://medium.com/@moh.mir36/open-graph-with-next-js-v13-app-directory-22c0049e2087
 // 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://lightwerk.vercel.app/shadowing'),
+  metadataBase: new URL('https://lightwerk.digital/'),
   title: "Shadowing",
   description: "We are the Dreamers of the Dream",
   openGraph: {
     images: [
       {
-        url: 'https://res.cloudinary.com/dhbk213bt/image/upload/v1706917124/recognition/og-shadowing.jpg',
+        url: 'https://res.cloudinary.com/dhbk213bt/image/upload/v1706917124/lightwerk/og/og-shadowing.jpg',
       },
     ],
   },
